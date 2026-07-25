@@ -1,0 +1,33 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "b4c3085cd0552ec7a8505c91a413922b"
+application_url = "https://visual-studio-backend.up.railway.app"
+embedded = true
+name = "Helfer ai"
+
+[webhooks]
+api_version = "2026-04"
+
+  [[webhooks.subscriptions]]
+  uri = "/api/gdpr/customers/data_request"
+  compliance_topics = [ "customers/data_request" ]
+
+  [[webhooks.subscriptions]]
+  uri = "/api/gdpr/customers/redact"
+  compliance_topics = [ "customers/redact" ]
+
+  [[webhooks.subscriptions]]
+  uri = "/api/gdpr/shop/redact"
+  compliance_topics = [ "shop/redact" ]
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_products,write_products"
+optional_scopes = []
+use_legacy_install_flow = false
+
+[auth]
+# This callback URL must match the Shopify OAuth callback route implemented in the backend.
+redirect_urls = [
+  "https://visual-studio-backend.up.railway.app/api/shopify/auth/callback",
+]
